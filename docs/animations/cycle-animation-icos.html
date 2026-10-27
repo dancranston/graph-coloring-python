@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+body { font-family:sans-serif; text-align:center; }
+svg { border:1px solid #ccc; }
+.controls { display:flex; flex-wrap:wrap; justify-content:center;
+             align-items:center; gap:8px 18px; }
+.group { display:flex; align-items:center; white-space:nowrap; }
+button,select { font-size:16px; margin:5px; padding:5px 12px; }
+input[type=range] { width:300px; margin:5px 10px; }
+.status { margin-left:20px; }
+</style>
+</head>
+<body>
+
+<div class="controls">
+
+<div class="group">
+<button id="prev">Previous</button>
+<button id="play">Play</button>
+<button id="next">Next</button>
+<select id="speed">
+<option value=".5">0.5×</option>
+<option value="1" selected>1×</option>
+<option value="2">2×</option>
+<option value="4">4×</option>
+<option value="8">8×</option>
+</select>
+<label><input type="checkbox" id="colorOnly">
+Only show color changes</label>
+</div>
+
+<div class="group">
+<input type="range" id="slider" min="0" max="36" value="0">
+<span id="label"></span>
+<span class="status" id="status"></span>
+</div>
+
+</div>
+
+<svg width="640" height="540" viewBox="0 0 640 540">
+<g fill="#eeeeee" stroke="none"><polygon class="face" points="30.0,510.0 494.0,462.0 610.0,510.0"/>
+<polygon class="face" points="30.0,510.0 146.0,414.0 494.0,462.0"/>
+<polygon class="face" points="30.0,510.0 262.0,174.0 146.0,414.0"/>
+<polygon class="face" points="30.0,510.0 320.0,30.0 262.0,174.0"/>
+<polygon class="face" points="30.0,510.0 610.0,510.0 320.0,30.0"/>
+<polygon class="face" points="610.0,510.0 378.0,222.0 349.0,126.0"/>
+<polygon class="face" points="610.0,510.0 494.0,462.0 378.0,222.0"/>
+<polygon class="face" points="610.0,510.0 349.0,126.0 320.0,30.0"/>
+<polygon class="face" points="378.0,222.0 349.0,270.0 349.0,126.0"/>
+<polygon class="face" points="378.0,222.0 436.0,366.0 349.0,270.0"/>
+<polygon class="face" points="378.0,222.0 494.0,462.0 436.0,366.0"/>
+<polygon class="face" points="349.0,270.0 291.0,222.0 349.0,126.0"/>
+<polygon class="face" points="349.0,270.0 204.0,318.0 291.0,222.0"/>
+<polygon class="face" points="349.0,270.0 436.0,366.0 204.0,318.0"/>
+<polygon class="face" points="291.0,222.0 320.0,30.0 349.0,126.0"/>
+<polygon class="face" points="291.0,222.0 262.0,174.0 320.0,30.0"/>
+<polygon class="face" points="291.0,222.0 204.0,318.0 262.0,174.0"/>
+<polygon class="face" points="146.0,414.0 436.0,366.0 494.0,462.0"/>
+<polygon class="face" points="146.0,414.0 204.0,318.0 436.0,366.0"/>
+<polygon class="face" points="146.0,414.0 262.0,174.0 204.0,318.0"/></g>
+<g stroke="black" stroke-width="1" fill="none"><line x1="30.0" y1="510.0" x2="610.0" y2="510.0"/>
+<line x1="30.0" y1="510.0" x2="320.0" y2="30.0"/>
+<line x1="30.0" y1="510.0" x2="146.0" y2="414.0"/>
+<line x1="30.0" y1="510.0" x2="494.0" y2="462.0"/>
+<line x1="30.0" y1="510.0" x2="262.0" y2="174.0"/>
+<line x1="610.0" y1="510.0" x2="378.0" y2="222.0"/>
+<line x1="610.0" y1="510.0" x2="320.0" y2="30.0"/>
+<line x1="610.0" y1="510.0" x2="349.0" y2="126.0"/>
+<line x1="610.0" y1="510.0" x2="494.0" y2="462.0"/>
+<line x1="378.0" y1="222.0" x2="349.0" y2="270.0"/>
+<line x1="378.0" y1="222.0" x2="349.0" y2="126.0"/>
+<line x1="378.0" y1="222.0" x2="494.0" y2="462.0"/>
+<line x1="378.0" y1="222.0" x2="436.0" y2="366.0"/>
+<line x1="349.0" y1="270.0" x2="291.0" y2="222.0"/>
+<line x1="349.0" y1="270.0" x2="349.0" y2="126.0"/>
+<line x1="349.0" y1="270.0" x2="436.0" y2="366.0"/>
+<line x1="349.0" y1="270.0" x2="204.0" y2="318.0"/>
+<line x1="291.0" y1="222.0" x2="320.0" y2="30.0"/>
+<line x1="291.0" y1="222.0" x2="349.0" y2="126.0"/>
+<line x1="291.0" y1="222.0" x2="204.0" y2="318.0"/>
+<line x1="291.0" y1="222.0" x2="262.0" y2="174.0"/>
+<line x1="320.0" y1="30.0" x2="349.0" y2="126.0"/>
+<line x1="320.0" y1="30.0" x2="262.0" y2="174.0"/>
+<line x1="146.0" y1="414.0" x2="494.0" y2="462.0"/>
+<line x1="146.0" y1="414.0" x2="436.0" y2="366.0"/>
+<line x1="146.0" y1="414.0" x2="204.0" y2="318.0"/>
+<line x1="146.0" y1="414.0" x2="262.0" y2="174.0"/>
+<line x1="494.0" y1="462.0" x2="436.0" y2="366.0"/>
+<line x1="436.0" y1="366.0" x2="204.0" y2="318.0"/>
+<line x1="204.0" y1="318.0" x2="262.0" y2="174.0"/></g>
+<polyline id="cycle" fill="none"
+          stroke="#d94801" stroke-width="5"/>
+<g stroke="black"><circle class="vertex" data-index="0" cx="30.0" cy="510.0" r="7"/>
+<circle class="vertex" data-index="1" cx="610.0" cy="510.0" r="7"/>
+<circle class="vertex" data-index="2" cx="378.0" cy="222.0" r="7"/>
+<circle class="vertex" data-index="3" cx="349.0" cy="270.0" r="7"/>
+<circle class="vertex" data-index="4" cx="291.0" cy="222.0" r="7"/>
+<circle class="vertex" data-index="5" cx="320.0" cy="30.0" r="7"/>
+<circle class="vertex" data-index="6" cx="146.0" cy="414.0" r="7"/>
+<circle class="vertex" data-index="7" cx="494.0" cy="462.0" r="7"/>
+<circle class="vertex" data-index="8" cx="436.0" cy="366.0" r="7"/>
+<circle class="vertex" data-index="9" cx="204.0" cy="318.0" r="7"/>
+<circle class="vertex" data-index="10" cx="262.0" cy="174.0" r="7"/>
+<circle class="vertex" data-index="11" cx="349.0" cy="126.0" r="7"/></g>
+</svg>
+
+<script>
+const cycles=["610.0,510.0 494.0,462.0 30.0,510.0 610.0,510.0", "610.0,510.0 494.0,462.0 146.0,414.0 262.0,174.0 320.0,30.0 610.0,510.0", "610.0,510.0 494.0,462.0 146.0,414.0 262.0,174.0 291.0,222.0 349.0,126.0 610.0,510.0", "610.0,510.0 494.0,462.0 146.0,414.0 262.0,174.0 291.0,222.0 349.0,270.0 378.0,222.0 610.0,510.0", "610.0,510.0 494.0,462.0 378.0,222.0 610.0,510.0", "610.0,510.0 494.0,462.0 378.0,222.0 610.0,510.0", "610.0,510.0 494.0,462.0 146.0,414.0 262.0,174.0 291.0,222.0 349.0,270.0 378.0,222.0 610.0,510.0", "378.0,222.0 494.0,462.0 146.0,414.0 262.0,174.0 291.0,222.0 349.0,270.0 378.0,222.0", "378.0,222.0 494.0,462.0 146.0,414.0 262.0,174.0 291.0,222.0 204.0,318.0 436.0,366.0 378.0,222.0", "378.0,222.0 494.0,462.0 436.0,366.0 378.0,222.0", "378.0,222.0 494.0,462.0 436.0,366.0 378.0,222.0", "378.0,222.0 494.0,462.0 146.0,414.0 262.0,174.0 291.0,222.0 204.0,318.0 436.0,366.0 378.0,222.0", "436.0,366.0 494.0,462.0 146.0,414.0 262.0,174.0 291.0,222.0 204.0,318.0 436.0,366.0", "436.0,366.0 494.0,462.0 146.0,414.0 262.0,174.0 204.0,318.0 436.0,366.0", "436.0,366.0 494.0,462.0 146.0,414.0 204.0,318.0 436.0,366.0", "436.0,366.0 494.0,462.0 146.0,414.0 436.0,366.0", "436.0,366.0 494.0,462.0 146.0,414.0 436.0,366.0", "436.0,366.0 494.0,462.0 146.0,414.0 436.0,366.0", "436.0,366.0 494.0,462.0 146.0,414.0 204.0,318.0 436.0,366.0", "436.0,366.0 494.0,462.0 146.0,414.0 262.0,174.0 204.0,318.0 436.0,366.0", "204.0,318.0 146.0,414.0 262.0,174.0 204.0,318.0", "204.0,318.0 146.0,414.0 262.0,174.0 204.0,318.0", "436.0,366.0 494.0,462.0 146.0,414.0 262.0,174.0 204.0,318.0 436.0,366.0", "436.0,366.0 494.0,462.0 146.0,414.0 262.0,174.0 291.0,222.0 204.0,318.0 436.0,366.0", "204.0,318.0 262.0,174.0 291.0,222.0 204.0,318.0", "204.0,318.0 262.0,174.0 291.0,222.0 204.0,318.0", "436.0,366.0 494.0,462.0 146.0,414.0 262.0,174.0 291.0,222.0 204.0,318.0 436.0,366.0", "378.0,222.0 494.0,462.0 146.0,414.0 262.0,174.0 291.0,222.0 204.0,318.0 436.0,366.0 378.0,222.0", "378.0,222.0 494.0,462.0 146.0,414.0 262.0,174.0 291.0,222.0 204.0,318.0 436.0,366.0 378.0,222.0", "378.0,222.0 494.0,462.0 146.0,414.0 262.0,174.0 291.0,222.0 349.0,270.0 378.0,222.0", "610.0,510.0 494.0,462.0 146.0,414.0 262.0,174.0 291.0,222.0 349.0,270.0 378.0,222.0 610.0,510.0", "610.0,510.0 494.0,462.0 146.0,414.0 262.0,174.0 291.0,222.0 349.0,270.0 378.0,222.0 610.0,510.0", "610.0,510.0 494.0,462.0 146.0,414.0 262.0,174.0 291.0,222.0 349.0,126.0 610.0,510.0", "610.0,510.0 494.0,462.0 146.0,414.0 262.0,174.0 291.0,222.0 349.0,126.0 610.0,510.0", "610.0,510.0 494.0,462.0 146.0,414.0 262.0,174.0 320.0,30.0 610.0,510.0", "610.0,510.0 494.0,462.0 146.0,414.0 262.0,174.0 320.0,30.0 610.0,510.0", "610.0,510.0 494.0,462.0 30.0,510.0 610.0,510.0"];
+const grayAt=[0, null, 3, 3, 2, 1, 1, null, 8, 8, 1, 2];
+const dgrayAt=[1, null, null, 8, null, 2, null, null, null, 15, null, 3];
+const blackAt=[35, 0, 5, 28, 25, 33, 16, 0, 10, 17, 21, 31];
+const changed=[[0, 1, 7], [5, 10, 6, 0], [11, 4, 5], [2, 3, 11], [], [2], [], [], [8, 9, 3], [], [8], [], [], [], [], [9], [6], [9], [], [], [], [10], [], [], [], [4], [], [], [3], [], [], [11], [], [5], [], [0], []];
+const colorChangeFrames=[0, 1, 2, 3, 5, 8, 10, 15, 16, 17, 21, 25, 28, 31, 33, 35];
+const processedAt=[35, 35, 35, 35, 35, 31, 5, 33, 31, 28, 10, 31, 28, 28, 33, 33, 25, 16, 17, 21];
+const color1="#145a32", color2="#4f9a68", color3="#b7d9c0";
+const faceShade="#eeeeee", highlight="#ffd700";
+const baseInterval=500;
+
+let current=0, playing=false, timer=null, colorOnly=false;
+
+const cycle=document.getElementById("cycle");
+const slider=document.getElementById("slider");
+const label=document.getElementById("label");
+const status=document.getElementById("status");
+const speed=document.getElementById("speed");
+const colorOnlyBox=document.getElementById("colorOnly");
+const vertices=document.querySelectorAll(".vertex");
+const faces=document.querySelectorAll(".face");
+
+function frames() {
+    return colorOnly ? colorChangeFrames : cycles.map((_,i)=>i);
+}
+
+function show(i) {
+    const f=frames();
+    current=(i+f.length)%f.length;
+    const frame=f[current];
+
+    cycle.setAttribute("points",cycles[frame]);
+    slider.value=current;
+    label.textContent=`Cycle ${frame+1} / ${cycles.length}`;
+
+    vertices.forEach((v,j) => {
+        v.setAttribute("fill",
+            blackAt[j] !== null && blackAt[j] <= frame ? color1 :
+            dgrayAt[j] !== null && dgrayAt[j] <= frame ? color2 :
+            grayAt[j] !== null && grayAt[j] <= frame ? color3 : "white");
+
+        const h=changed[frame].includes(j);
+        v.setAttribute("stroke",h ? highlight : "black");
+        v.setAttribute("stroke-width",h ? 3 : 1);
+    });
+
+    faces.forEach((face,j) =>
+        face.setAttribute("fill",
+            processedAt[j] !== null && processedAt[j] <= frame
+                ? faceShade : "none"));
+
+    status.textContent =
+        `Vertices colored ${blackAt.filter(t => t !== null && t <= frame).length} / ${vertices.length}`;
+}
+
+function restart() {
+    if (timer) clearInterval(timer);
+    if (playing)
+        timer=setInterval(() => show(current+1),
+                          baseInterval/Number(speed.value));
+}
+
+prev.onclick=()=>show(current-1);
+next.onclick=()=>show(current+1);
+slider.oninput=()=>show(Number(slider.value));
+
+play.onclick=()=>{
+    playing=!playing;
+    play.textContent=playing ? "Pause" : "Play";
+    restart();
+};
+
+speed.onchange=restart;
+
+colorOnlyBox.onchange=()=>{
+    const frame=frames()[current];
+    colorOnly=colorOnlyBox.checked;
+    const f=frames();
+    slider.max=f.length-1;
+    let i=f.indexOf(frame);
+    if (i < 0) {
+        i=f.findIndex(x=>x>frame);
+        if (i < 0) i=f.length-1;
+    }
+    show(i);
+};
+
+show(0);
+</script>
+
+</body>
+</html>
